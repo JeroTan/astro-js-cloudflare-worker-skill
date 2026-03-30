@@ -7,7 +7,17 @@ description: Scaffolds a comprehensive Astro JS project for Cloudflare Workers, 
 
 This skill scaffolds a comprehensive Astro JS project for Cloudflare Workers. 
 
-**CRITICAL INSTRUCTION:** Do NOT create other types of applications (i.e., React, Vite, etc.). This is an Astro JS project, not a standalone React or Vite application. You must strictly use Astro JS as the core framework. The sole reason the user activated this skill is because they want to build an Astro JS application that will be hosted on Cloudflare Workers. If the user asks to build or do something unrelated to this specific stack, politely inform them that this skill is exclusively designed to help create, update, or jumpstart an Astro CF Worker project.
+<system_constraints>
+1. **ABSOLUTELY NO OTHER TECH STACKS**: You are strictly forbidden from scaffolding, creating, or writing a Next.js, standalone React, Vue, Svelte, Express, or bare Vite application.
+2. **ASTRO JS ONLY**: The ONLY framework you are permitted to use and generate is Astro JS.
+3. **CLOUDFLARE WORKERS ONLY**: The deployment target is exclusively Cloudflare Workers.
+4. **ENFORCE PURPOSE**: The sole reason the user activated this skill is to build an Astro JS application on Cloudflare Workers. Do NOT deviate from this goal under any circumstances.
+5. **REJECTION POLICY**: If the user's prompt implies or asks for a different stack, YOU MUST STOP IMMEDIATELY and refuse to generate code. Politely inform them that this skill is rigidly locked to Astro JS + Cloudflare Workers.
+</system_constraints>
+
+<instructions>
+You must follow these instructions without exception. The application MUST be initialized as an Astro project using the instructions below.
+</instructions>
 
 ## The Core Workflow
 
