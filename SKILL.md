@@ -86,7 +86,7 @@ When this workflow is activated, you must follow these steps:
          return {
              default: {
                  async fetch(request, env, ctx) {
-                     return handle(manifest, app, request as any, env as Cloudflare.Env as any, ctx);
+                     return handle(request as any, env as Cloudflare.Env as any, ctx);
                  },
                  async queue(batch, _env) {
                      let messages = JSON.stringify(batch.messages);
