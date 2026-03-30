@@ -1,8 +1,8 @@
 # Astro Cloudflare Worker Setup Skill
 
-This repository contains an AI Agent Skill designed to scaffold a comprehensive [Astro JS](https://astro.build/) project optimized for [Cloudflare Workers](https://workers.cloudflare.com/). 
+This repository contains an AI Agent Skill designed to scaffold a comprehensive [Astro JS](https://astro.build/) project optimized for [Cloudflare Workers](https://workers.cloudflare.com/). It is the perfect choice for developers building full-stack applications with Astro who want a seamless deployment to Cloudflare while following rigorous architectural standards.
 
-While it is structured for agents like the **Gemini CLI**, the Markdown-based instructions and references can be used by any capable AI coding assistant (like Cursor, Claude, or GitHub Copilot) to execute the workflow.
+This skill can be used by any AI agent or coding assistant (like Cursor, Claude, or GitHub Copilot) to execute the workflow.
 
 It sets up an advanced, production-ready environment featuring Durable Objects, Elysia API, D1 databases, and enforces a robust Domain-Driven Design (DDD) architecture.
 
@@ -18,7 +18,7 @@ It sets up an advanced, production-ready environment featuring Durable Objects, 
 
 ## Installation
 
-You can easily install this skill globally for your AI agents (like Gemini CLI) using the [Agent Skills](https://skills.sh/) CLI. Run the following command in your terminal:
+You can easily install this skill globally for your AI agents using the [Agent Skills](https://skills.sh/) CLI. Run the following command in your terminal:
 
 ```bash
 npx skills add JeroTan/astro-js-cloudflare-worker-skill
@@ -52,5 +52,5 @@ When this skill is activated by an AI agent, it will guide you through a structu
 ## Requirements
 
 - [Node.js](https://nodejs.org/)
-- An AI Agent / CLI Assistant (e.g., Gemini CLI)
+- An AI Agent / CLI Assistant
 - Cloudflare account (for deployment)
