@@ -7,7 +7,7 @@
 ```jsonc
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"main": "./dist/_worker.js/index.js",
+	"main": "src/cloudflare/worker.ts",
 	"name": "project-name",
 	"compatibility_date": "2025-09-15",
 	"compatibility_flags": [

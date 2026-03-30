@@ -1,5 +1,7 @@
 # Layouts and Theming
 
+- **CLEANUP**: After initializing the Astro project, remove all default files in `src/layouts` and `src/pages` (except for the Elysia API routes) to keep the project clean and ready for development.
+
 - Setup `src/features/theme/ThemeScript.astro` for dark mode logic:
   ```html
   <script is:inline>
@@ -53,4 +55,12 @@
   </html>
   ```
 - In `src/styles/globals.css`, make sure to `@import "tailwindcss";`.
-- Provide a basic `src/pages/index.astro`.
+- Create `src/pages/index.astro` using the layout:
+  ```html
+  ---
+  import Layout from "@/layouts/Layout.astro";
+  ---
+  <Layout title="Hello World" html={{}}>
+      <h1>Hello World</h1>
+  </Layout>
+  ```

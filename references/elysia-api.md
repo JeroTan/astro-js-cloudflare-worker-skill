@@ -54,4 +54,26 @@
     return app;
   }
   ```
-- Provide a `SampleRoutes` file (`src/api/routes/sample.ts`).
+- Create `src/api/routes/sample.ts` with typed helper usage:
+  ```typescript
+  export function SampleRoutes({ app }: { app: Elysia }) {
+    app
+      .use(typedEnv)
+      .use(typedUrlData)
+      .use(typedAstroCookies)
+      .get('/sample', ({ env, astroCookies, urlData }) => {
+        return Response.json({
+          message: "This is a sample route",
+          urlOrigin: urlData.origin,
+          cookies: astroCookies.get("Something") ?? "No cookie named Something",
+        });
+      }, {
+        detail: {
+          summary: 'Sample route to test if everything is working',
+          tags: ['Sample']
+        },
+      });
+    return app;
+  }
+  ```
+- **Note**: Ensure `typedEnv`, `typedUrlData`, and `typedAstroCookies` helpers are defined in your library (see Reference Codebase).

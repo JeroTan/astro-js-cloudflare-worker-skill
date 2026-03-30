@@ -59,11 +59,12 @@ When this workflow is activated, you must follow these steps:
    This is essential to keep the `Cloudflare.Env` types in `worker-configuration.d.ts` synchronized with the configuration, ensuring type safety when accessing bindings via `Astro.locals.runtime.env`.
 
 7. **Astro Configuration (`astro.config.mjs`)**:
-   - Add the Cloudflare adapter with `imageService: "compile"` and `workerEntryPoint: { path: "src/cloudflare/worker.ts" }`.
+   - Add the Cloudflare adapter: `adapter: cloudflare()`.
    - Add Tailwind plugin to Vite.
    - If React is installed, add Vite resolve alias:
      ```javascript
      export default defineConfig({
+         adapter: cloudflare(),
          vite: {
              resolve: {
                  //@ts-ignore
@@ -77,27 +78,23 @@ When this workflow is activated, you must follow these steps:
 8. **Worker Entry Point (`src/cloudflare/worker.ts`)**:
    - Must use this exact code:
      ```typescript
-     import type { SSRManifest } from "astro";
-     import { App } from "astro/app";
      import { handle } from "@astrojs/cloudflare/handler";
+     
+     // For modularity, export all from your durable objects here
+     // e.g. export * from "./durable-objects/ExampleDurableObject";
 
-     export function createExports(manifest: SSRManifest) {
-         const app = new App(manifest);
-         return {
-             default: {
-                 async fetch(request, env, ctx) {
-                     return handle(request as any, env as Cloudflare.Env as any, ctx);
-                 },
-                 async queue(batch, _env) {
-                     let messages = JSON.stringify(batch.messages);
-                     console.log(`consumed from our queue: ${messages}`);
-                 },
-                 async scheduled(event, env, ctx){
-                     // Do some time logic heere
-                 },
-             } satisfies ExportedHandler<Cloudflare.Env>,
-         };
-     }
+     export default {
+         async fetch(request, env, ctx) {
+             return handle(request, env, ctx);
+         },
+         async queue(batch, _env) {
+             let messages = JSON.stringify(batch.messages);
+             console.log(`consumed from our queue: ${messages}`);
+         },
+         async scheduled(event, env, ctx){
+             // Do some time logic heere
+         },
+     } satisfies ExportedHandler<Env>;
      ```
 
 ## References
